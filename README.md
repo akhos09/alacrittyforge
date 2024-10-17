@@ -20,7 +20,7 @@ This Bash script simplifies the installation of the Alacritty terminal emulator 
 2. **Move to the directory that contains the script**:
    
    ```bash
-   git clone https://github.com/akhos09/alacrittyforge
+   cd alacrittyforge/
 
 3. **Make the script executable and run it**:
    
