@@ -26,6 +26,6 @@ This Bash script simplifies the installation of the Alacritty terminal emulator 
    
    ```bash
    chmod +x alacrittyforge.sh
----------------------------------------------   
+-------------------------------------------
    ```bash
    ./alacrittyforge.sh
