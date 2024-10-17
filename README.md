@@ -1,7 +1,3 @@
-Here’s the enhanced version for you to copy:
-
----
-
 # AlacrittyForge: Installation & Theme Manager
 
 A comprehensive Bash script designed to streamline the installation of the **Alacritty** terminal emulator on Ubuntu, with added functionality for effortless theme switching.
