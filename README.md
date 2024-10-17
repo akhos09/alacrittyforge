@@ -44,6 +44,3 @@ Use the script’s intuitive theme selector to browse and apply themes from the 
 
 No need for complex commands or manual configuration edits. With AlacrittyForge, installing and managing Alacritty is just a few steps away.
 
----
-
-Feel free to copy and paste it into your project!
