@@ -46,5 +46,5 @@ No need for complex commands or manual configuration edits. Feel free to suggest
 
 ## Credits
 
-Thank to all of the contributors of Alacritty that helps the project. All of the credits to them and specially to Joe Wilm (Creator), Kirill Chibisov (Developer), and Christian Dürr (Developer).
+Thank to all of the contributors of Alacritty that are constantly improving the project. All of the credits to them and specially to Joe Wilm (Creator), Kirill Chibisov (Developer), and Christian Dürr (Developer).
 
