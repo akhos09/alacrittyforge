@@ -9,7 +9,7 @@
 #:Usage:
 #:        - Option 1): Installs Alacritty without updating system packages.
 #:        - Option 2): Updates system packages and then installs Alacritty.
-#:        - Option 3): Allows changing the Alacritty theme by inputting the theme name (available from the alacritty/themes repo) instantly.
+#:        - Option 3): Allows changing the Alacritty theme by putting the theme name (available from the alacritty/themes repo) instantly.
 #:Dependencies:
 #:        - "CMake", "Pkg-config", "libfreetype6-dev", "libfontconfig1-dev", "Cargo", "libxcb-xfixes0-dev"
 #:        - "libxkbcommon-dev", "Python3", "libglib2.0-dev", "libgdk-pixbuf2.0-dev", "libxi-dev", "libxrender-dev", "libxrandr-dev", "libxinerama-dev"
