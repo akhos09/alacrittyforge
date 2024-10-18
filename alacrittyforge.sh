@@ -15,10 +15,6 @@
 #:        - "libxkbcommon-dev", "Python3", "libglib2.0-dev", "libgdk-pixbuf2.0-dev", "libxi-dev", "libxrender-dev", "libxrandr-dev", "libxinerama-dev"
 #:Credits: @chrisduerr and @kchibisov, creators of Alacritty.
 
-
-# Connectivity check
-var=$(curl -s --head http://www.google.com | head -n 1)
-    if [[ $var == "200 OK" ]]; then
          echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
     echo "  █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗"
@@ -29,11 +25,6 @@ var=$(curl -s --head http://www.google.com | head -n 1)
     echo " ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
-    else
-        echo "No internet connection detected. Please check your network adapter and rerun the script."
-        exit 1  # Exit the script if no connection
-    fi
-
 
 # Function to install Alacritty without updating
 install_alacritty() {
