@@ -15,7 +15,9 @@
 #:        - "libxkbcommon-dev", "Python3", "libglib2.0-dev", "libgdk-pixbuf2.0-dev", "libxi-dev", "libxrender-dev", "libxrandr-dev", "libxinerama-dev"
 #:Credits: @chrisduerr and @kchibisov, creators of Alacritty.
 
-         echo -e "\n-----------------------------------------------------------------------------------------------------------------"
+if nslookup google.com &> /dev/null; then
+    # If there is a connection, display "AlacrittyForge" in ASCII
+    echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
     echo "  █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗"
     echo " ██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝"
@@ -25,7 +27,10 @@
     echo " ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
-
+else
+    echo "No internet connection detected. Please check your network adapter and rerun the script."
+    exit 1  # Exit the script if no connection
+fi
 # Function to install Alacritty without updating
 install_alacritty() {
     echo -e "\nInstalling Alacritty without updating system packages..."
