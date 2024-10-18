@@ -17,9 +17,9 @@
 
 
 # Connectivity check
-if ping -c 1 8.8.8.8 &> /dev/null; then
-    # If there is a connection, display "AlacrittyForge" in ASCII
-    echo -e "\n-----------------------------------------------------------------------------------------------------------------"
+var=$(curl -s --head http://www.google.com | head -n 1)
+    if [[ $var == "200 OK" ]]; then
+         echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
     echo "  █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗"
     echo " ██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝"
@@ -29,10 +29,10 @@ if ping -c 1 8.8.8.8 &> /dev/null; then
     echo " ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
-else
-    echo "No internet connection detected. Please check your network adapter and rerun the script."
-    exit 1  # Exit the script if no connection
-fi
+    else
+        echo "No internet connection detected. Please check your network adapter and rerun the script."
+        exit 1  # Exit the script if no connection
+    fi
 
 
 # Function to install Alacritty without updating
