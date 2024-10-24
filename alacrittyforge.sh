@@ -16,7 +16,6 @@
 #:Credits: @chrisduerr and @kchibisov, creators of Alacritty.
 
 if nslookup google.com &> /dev/null; then
-    # If there is a connection, display "AlacrittyForge" in ASCII
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
     echo "  █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗"
@@ -29,78 +28,60 @@ if nslookup google.com &> /dev/null; then
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
 else
     echo "No internet connection detected. Please check your network adapter and rerun the script."
-    exit 1  # Exit the script if no connection
+    exit 1  
 fi
-# Function to install Alacritty without updating
+
 install_alacritty() {
     echo -e "\nInstalling Alacritty without updating system packages..."
 
-    # Installing dependencies
     sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev cargo \
     libxcb-xfixes0-dev libxkbcommon-dev python3 libglib2.0-dev \
     libgdk-pixbuf2.0-dev libxi-dev libxrender-dev libxrandr-dev libxinerama-dev
-
-    # Installing Rust
+    
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source $HOME/.cargo/env
     sudo apt install -y build-essential
 
-    # Cloning the repository and navigating to the directory
     git clone https://github.com/alacritty/alacritty.git 2>/dev/null
     cd alacritty || { echo "Could not change to the Alacritty directory."; exit 1; }
 
-    # Installing via cargo
     cargo build --release
-
-    # Creating a GUI icon
+    
     sudo cp target/release/alacritty /usr/local/bin 
     sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
     sudo desktop-file-install extra/linux/Alacritty.desktop
     sudo update-desktop-database
 }
 
-
-# Function to update and then install Alacritty
 update_and_install_alacritty() {
     echo "Updating system packages and installing Alacritty..."
     sudo apt update && sudo apt upgrade -y
     install_alacritty
 }
 
-
-# Function to change Alacritty theme
 change_alacritty_theme() {
     echo -e "\nAlacritty Theme Selector:"
-    # Using the default Linux config directory to store themes
     mkdir -p ~/.config/alacritty/themes 2>/dev/null
     git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes 2>/dev/null
 
     echo -e "\nAvailable themes and appearance in the attached repository: https://github.com/alacritty/alacritty-theme"
 
-    # Prompt the user to enter the theme name
     read -p "Enter the Alacritty theme name (e.g., aura, blood_moon, gruvbox_dark): " theme
 
-    # Verify that the theme directory and file exist
     theme_file="$HOME/.config/alacritty/themes/themes/${theme}.toml"
     if [[ -f "$theme_file" ]]; then
-        # Alacritty configuration file
         config_file="$HOME/.config/alacritty/alacritty.toml"
 
-        # Create the correct import line format
         new_import_line="import = [\"$theme_file\"]"
 
-        # Check if the import section already exists
         if grep -q "^import =" "$config_file"; then
-            # Replace the existing import line
             sed -i "s|^import = .*|$new_import_line|" "$config_file"
             echo "Theme '$theme' successfully replaced in the configuration."
         else
-            # If not, add the new import line
             echo -e "$new_import_line\n" >> "$config_file"
             echo "Theme '$theme' successfully added to the configuration."
         fi
-
-        # Migrate the file to apply the theme change instantly
+        
         echo "Launching Alacritty with theme '$theme'..."
         alacritty migrate
     else
@@ -110,7 +91,6 @@ change_alacritty_theme() {
 }
 
 
-# Menu selection
 while true; do
     echo "Select an option:"
     echo "1) Install Alacritty without checking for updates."
