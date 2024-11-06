@@ -1,14 +1,11 @@
 # AlacrittyForge: Installation & Theme Manager
 
-A comprehensive Bash script designed to streamline the installation of the **Alacritty** terminal emulator on Ubuntu, with added functionality for effortless theme switching.
+A script that auto-install **Alacritty** , with an added theme selector.
 
 ##  Features
-
-- **Internet Connectivity Check**: Ensures a stable internet connection before installation.
 - **Dependency Installation**: Installs Alacritty and all necessary dependencies without system-wide updates.
 - **System Update & Install**: Option to update all system packages before installing Alacritty.
 - **Theme Management**: Seamlessly switch between themes from the [alacritty-theme](https://github.com/alacritty/alacritty-theme) repository with a user-friendly theme selection process.
-- **Interactive Menu**: Easy-to-navigate interface for choosing installation and theme options.
 
 ##  Installation & Usage
 
