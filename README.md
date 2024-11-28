@@ -32,16 +32,13 @@ A script that auto-install **Alacritty** , with an added theme selector.
    ```bash
    ./alacrittyforge.sh
    ```
-
+   
 ##  Changing Themes
 
-Use the script’s intuitive theme selector to browse and apply themes from the [alacritty-theme](https://github.com/alacritty/alacritty-theme) repository. Simply input the desired theme name, and the script will handle the rest.
+Use the script’s intuitive theme selector to browse and apply themes from the [alacritty-theme](https://github.com/alacritty/alacritty-theme) repository.
 
-##  Quick & Simple
-
-No need for complex commands or manual configuration edits. Feel free to suggest fixes or ways to improve anything.
 
 ## Credits
 
-Thank to all of the contributors of Alacritty that are constantly improving the project. All of the credits to them and specially to Joe Wilm (Creator), Kirill Chibisov (Developer), and Christian Dürr (Developer).
+Thank to all of the contributors of Alacritty that are constantly improving the project. All of the credits are for them and specially to Joe Wilm (Creator), Kirill Chibisov (Developer), and Christian Dürr (Developer).
 
