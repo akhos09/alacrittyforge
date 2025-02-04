@@ -28,7 +28,7 @@
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
 
 install_alacritty() {
-    read -p "Do you also want to install oh-my-bash?(y/n)" option_ohmybash
+    read -p "Do you also want to install oh-my-bash?(y/n): " option_ohmybash
     echo -e "\nInstalling Alacritty without updating system packages..."
 
     sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev cargo \
@@ -58,7 +58,7 @@ install_alacritty() {
 }
 install_ohmybash(){
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-    read -p "Do you also want to apply a theme from oh-my-bash?(y/n)" option_ohmybash_theme
+    read -p "Do you also want to apply a theme from oh-my-bash?(y/n): " option_ohmybash_theme
     if [["$option_ohmybash" == "y"]]; then
         read -p "Name of the theme (Just type the name of the theme from this repo https://github.com/ohmybash/oh-my-bash/wiki/Themes): " theme_selected
 
