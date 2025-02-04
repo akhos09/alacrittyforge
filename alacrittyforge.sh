@@ -49,7 +49,7 @@ install_alacritty() {
     sudo desktop-file-install extra/linux/Alacritty.desktop
     sudo update-desktop-database
 
-    if [["$option_ohmybash" == "y"]]; then
+    if [[ "$option_ohmybash" == "y" ]]; then
         install_ohmybash
     else
         echo -e "oh_my_bash install option not selected."
@@ -59,7 +59,7 @@ install_alacritty() {
 install_ohmybash(){
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
     read -p "Do you also want to apply a theme from oh-my-bash?(y/n): " option_ohmybash_theme
-    if [["$option_ohmybash" == "y"]]; then
+    if [[ "$option_ohmybash" == "y" ]]; then
         read -p "Name of the theme (Just type the name of the theme from this repo https://github.com/ohmybash/oh-my-bash/wiki/Themes): " theme_selected
 
         if grep -q "OSH_THEME=" ~/.bashrc; then
@@ -132,7 +132,7 @@ while true; do
     echo "4) Change oh-my-bash theme."
     echo "5) Exit"
 
-    read -p "Enter your option (1-4): " option
+    read -p "Enter your option (1-5): " option
 
     case $option in
         1)
