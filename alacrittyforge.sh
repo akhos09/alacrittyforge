@@ -15,7 +15,7 @@
 #:        - "libxkbcommon-dev", "Python3", "libglib2.0-dev", "libgdk-pixbuf2.0-dev", "libxi-dev", "libxrender-dev", "libxrandr-dev", "libxinerama-dev"
 #:Credits: @chrisduerr and @kchibisov, creators of Alacritty.
 
-if nslookup google.com &> /dev/null; then
+
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
     echo "  █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗███████╗ ██████╗ ██████╗  ██████╗ ███████╗"
@@ -26,12 +26,9 @@ if nslookup google.com &> /dev/null; then
     echo " ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝"
     echo -e "\n-----------------------------------------------------------------------------------------------------------------"
     echo -e "-----------------------------------------------------------------------------------------------------------------\n"
-else
-    echo "No internet connection detected. Please check your network adapter and rerun the script."
-    exit 1  
-fi
 
 install_alacritty() {
+    read -p "Do you also want to install oh-my-bash?(y/n)" option_ohmybash
     echo -e "\nInstalling Alacritty without updating system packages..."
 
     sudo apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev cargo \
@@ -51,6 +48,42 @@ install_alacritty() {
     sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
     sudo desktop-file-install extra/linux/Alacritty.desktop
     sudo update-desktop-database
+
+    if [["$option_ohmybash" == "y"]]; then
+        install_ohmybash
+    else
+        echo -e "oh_my_bash install option not selected."
+    fi
+
+}
+install_ohmybash(){
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+    read -p "Do you also want to apply a theme from oh-my-bash?(y/n)" option_ohmybash_theme
+    if [["$option_ohmybash" == "y"]]; then
+        read -p "Name of the theme (Just type the name of the theme from this repo https://github.com/ohmybash/oh-my-bash/wiki/Themes): " theme_selected
+
+        if grep -q "OSH_THEME=" ~/.bashrc; then
+            sed -i.bak "s/^OSH_THEME=.*/OSH_THEME=\"$theme_selected\"/" ~/.bashrc
+        else
+            echo "OSH_THEME=\"$theme_selected\"" | tee -a ~/.bashrc > /dev/null
+        fi
+    
+        echo -e "Theme '$theme_selected' has been applied to your Oh My Bash configuration."
+    else
+        echo -e "Installation finished without selecting a theme."
+    fi
+
+}
+
+change_theme_ohmybash(){
+    read -p "Name of the theme (Just type the name of the theme from this repo https://github.com/ohmybash/oh-my-bash/wiki/Themes): " theme_selected
+
+    if grep -q "OSH_THEME=" ~/.bashrc; then
+        sed -i.bak "s/^OSH_THEME=.*/OSH_THEME=\"$theme_selected\"/" ~/.bashrc
+    else
+        echo "OSH_THEME=\"$theme_selected\"" | tee -a ~/.bashrc > /dev/null
+    fi
+    echo -e "Theme '$theme_selected' has been applied to your Oh My Bash configuration."
 }
 
 update_and_install_alacritty() {
@@ -59,7 +92,7 @@ update_and_install_alacritty() {
     install_alacritty
 }
 
-change_alacritty_theme() {
+change_theme_alacritty() {
     echo -e "\nAlacritty Theme Selector:"
     mkdir -p ~/.config/alacritty/themes 2>/dev/null
     git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes 2>/dev/null
@@ -96,7 +129,8 @@ while true; do
     echo "1) Install Alacritty without checking for updates."
     echo "2) Update system packages and install Alacritty."
     echo "3) Change Alacritty theme."
-    echo "4) Exit"
+    echo "4) Change oh-my-bash theme."
+    echo "5) Exit"
 
     read -p "Enter your option (1-4): " option
 
@@ -108,9 +142,12 @@ while true; do
             update_and_install_alacritty
             ;;
         3)
-            change_alacritty_theme
+            change_theme_alacritty
             ;;
         4)
+            change_theme_ohmybash
+            ;;
+        5)
             echo "Exiting..."
             exit 0
             ;;
