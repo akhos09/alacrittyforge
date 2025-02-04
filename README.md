@@ -1,11 +1,12 @@
 # AlacrittyForge: Installation & Theme Manager
 
-A script that auto-install **Alacritty** , with an added theme selector.
+A script that auto-install **Alacritty** and **Oh-My-Bash** , with an added theme selector.
 
 ##  Features
 - **Dependency Installation**: Installs Alacritty and all necessary dependencies without system-wide updates.
 - **System Update & Install**: Option to update all system packages before installing Alacritty.
-- **Theme Management**: Seamlessly switch between themes from the [alacritty-theme](https://github.com/alacritty/alacritty-theme) repository with a user-friendly theme selection process.
+- **Theme Management for Alacritty & Oh-My-Bash**: Seamlessly switch between themes from the [alacritty-theme](https://github.com/alacritty/alacritty-theme) repository with a user-friendly theme selection process.
+- **Install Oh-My-Bash**: Selecting yes at the start of the installation.
 
 ##  Installation & Usage
 
